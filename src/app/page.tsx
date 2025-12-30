@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Code2, Calendar, Trophy, Zap, Star, Shield, LayoutGrid, Sparkles } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -39,13 +44,23 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap items-center gap-6 pt-4">
-                <Link
-                  href="/auth/signup"
-                  className="px-10 py-5 rounded-2xl bg-white text-slate-950 font-black hover:scale-105 transition-all shadow-2xl shadow-white/10 flex items-center gap-3"
-                >
-                  Join CodeBlitz
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+                {session ? (
+                  <Link
+                    href="/dashboard"
+                    className="px-10 py-5 rounded-2xl bg-white text-slate-950 font-black hover:scale-105 transition-all shadow-2xl shadow-white/10 flex items-center gap-3"
+                  >
+                    Go to Dashboard
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                ) : (
+                  <Link
+                    href="/auth/signup"
+                    className="px-10 py-5 rounded-2xl bg-white text-slate-950 font-black hover:scale-105 transition-all shadow-2xl shadow-white/10 flex items-center gap-3"
+                  >
+                    Join CodeBlitz
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                )}
                 <Link
                   href="/calendar"
                   className="px-8 py-5 rounded-2xl bg-slate-800/50 border border-white/10 text-white font-bold hover:bg-slate-800 transition-all backdrop-blur-md"

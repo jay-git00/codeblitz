@@ -64,7 +64,7 @@ export default async function LadderDetailPage({ params }: { params: Promise<{ i
                                 </button>
                             )}
                             <a
-                                href={`https://codeforces.com/problemset/problem/${pb.id.split('-')[1]}`}
+                                href={`https://codeforces.com/problemset/problem/${pb.id.replace('cf-', '').replace(/(\d+)([a-z])/i, '$1/$2')}`}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="p-2 rounded-lg bg-white/5 text-slate-500 hover:text-white transition-colors"
