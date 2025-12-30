@@ -1,8 +1,7 @@
-```javascript
 import { Trophy, Medal, ArrowUp, ArrowDown, User } from "lucide-react";
 
 export default function LeaderboardPage() {
-    const leaderboard = [
+    const leaders = [
         { rank: 1, name: "PARDHU California ethical hacker", solved: 4502, streak: 120, rating: 3804, avatar: "T" },
         { rank: 2, name: "nithin", solved: 3982, streak: 85, rating: 3652, avatar: "B" },
         { rank: 3, name: "Ganesh the new insta influencer", solved: 3721, streak: 45, rating: 3591, avatar: "R" },
@@ -42,16 +41,15 @@ export default function LeaderboardPage() {
                                         {user.rank === 1 && <Medal className="w-5 h-5 text-yellow-500" />}
                                         {user.rank === 2 && <Medal className="w-5 h-5 text-slate-300" />}
                                         {user.rank === 3 && <Medal className="w-5 h-5 text-amber-700" />}
-                                        <span className={`text - lg font - bold font - outfit ${ user.rank <= 3 ? "text-white" : "text-slate-500" } `}>
+                                        <span className={`text-lg font-bold font-outfit ${user.rank <= 3 ? "text-white" : "text-slate-500"}`}>
                                             #{user.rank}
                                         </span>
                                     </div>
                                 </td>
                                 <td className="px-8 py-6">
                                     <div className="flex items-center gap-3">
-                                        <div className={`w - 10 h - 10 rounded - xl flex items - center justify - center font - bold shadow - lg ${
-    user.rank === 1 ? "bg-yellow-500/20 text-yellow-500" : "bg-slate-800 text-slate-400"
-} `}>
+                                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold shadow-lg ${user.rank === 1 ? "bg-yellow-500/20 text-yellow-500" : "bg-slate-800 text-slate-400"
+                                            }`}>
                                             {user.avatar}
                                         </div>
                                         <span className="font-bold group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{user.name}</span>
