@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CodeBlitz ⚡
 
 **CodeBlitz** is a high-performance, full-stack platform designed for competitive programming enthusiasts. It serves as a unified hub for tracking contests, solving problems across multiple platforms, and following structured learning paths (Ladders).
@@ -61,3 +62,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## 📄 License
 
 This project is licensed under the MIT License.
+=======
+# codeblitz
+>>>>>>> 1cc892df9fd1d0c1c94b8ae9d340b5fa4d160c54
