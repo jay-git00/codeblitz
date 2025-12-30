@@ -1,64 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight, Code2, Calendar, Trophy, Zap, Star, Target, Users } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { ArrowRight, Code2, Calendar, Trophy, Zap, Star, Shield, LayoutGrid, Sparkles } from "lucide-react";
 
-export default function HomePage() { // Renamed Home to HomePage
-  const { data: session } = useSession(); // Added useSession hook
-  const router = useRouter(); // Added useRouter hook
-
-  const handleFeatureClick = (path: string) => { // Added handleFeatureClick function
-    if (!session) {
-      router.push("/auth/login");
-    } else {
-      router.push(path);
-    }
-  };
-
-  // Defined features array based on existing FeatureCard components and the instruction's example
-  const features = [
-    {
-      icon: Code2, // Changed from LayoutGrid to Code2 based on instruction's example for "Multi-Platform Practice"
-      title: "Multi-Platform Practice", // Changed title from "Unified CP Pulse" to "Multi-Platform Practice"
-      description: "Access problems from Codeforces, LeetCode, AtCoder, and more in one place.", // Changed description
-      path: "/practice",
-    },
-    {
-      icon: Zap,
-      title: "Blitz-Fast Filters",
-      description: "Find problems by rating, topic, or platform in milliseconds with our optimized indexing.",
-      path: "/problems", // Assuming a path for filters/problems
-    },
-    {
-      icon: Target, // Changed from Shield to Target, assuming a more fitting icon for "Structured Mastery"
-      title: "Structured Mastery",
-      description: "Follow our algorithmic ladders specifically designed by top competitive programmers.",
-      path: "/ladders", // Assuming a path for ladders
-    },
-    {
-      icon: Calendar,
-      title: "Contest Calendar",
-      description: "Never miss a contest with our integrated calendar from multiple platforms.",
-      path: "/calendar",
-    },
-    {
-      icon: Trophy,
-      title: "CodeBlitz Ladders",
-      description: "Structured problem sets from beginner to advanced levels.",
-      path: "/ladder",
-    },
-    {
-      icon: Users,
-      title: "Global Leaderboard",
-      description: "Compete with programmers worldwide and track your progress.",
-      path: "/leaderboard",
-    },
-  ];
-
+export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
