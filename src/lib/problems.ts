@@ -53,20 +53,30 @@ export async function getProblems(
         }
     }
 
-    // AtCoder Mock Data
+    // AtCoder (Mock data - replace with real API if available)
     if (platform === "all" || platform === "atcoder") {
-        problems.push(
-            { id: "at-abc350-d", title: "ABC 350 - D: New Friends", difficulty: 1050, platform: "AtCoder", tags: ["Graph"], url: "..." },
-            { id: "at-abc351-c", title: "Merge the balls", difficulty: 800, platform: "AtCoder", tags: ["Stack"], url: "..." }
-        );
+        problems.push({
+            id: "abc001_a",
+            title: "Sample AtCoder Problem",
+            platform: "AtCoder",
+            difficulty: 800,
+            tags: ["implementation"],
+            url: "https://atcoder.jp/contests/abc001/tasks/abc001_a",
+            solved: false,
+        });
     }
 
-    // LeetCode Mock Data
+    // LeetCode (Mock data - LeetCode doesn't have a public API)
     if (platform === "all" || platform === "leetcode") {
-        problems.push(
-            { id: "lc-1", title: "Two Sum", difficulty: 400, platform: "LeetCode", tags: ["Array"], url: "..." },
-            { id: "lc-2", title: "Add Two Numbers", difficulty: 1200, platform: "LeetCode", tags: ["Math"], url: "..." }
-        );
+        problems.push({
+            id: "two-sum",
+            title: "Two Sum",
+            platform: "LeetCode",
+            difficulty: 1200,
+            tags: ["array", "hash-table"],
+            url: "https://leetcode.com/problems/two-sum/",
+            solved: false,
+        });
     }
 
     // Filter by Search Query
