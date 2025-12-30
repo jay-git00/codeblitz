@@ -40,7 +40,6 @@ export async function getProblems(
                         difficulty: p.rating || 0,
                         tags: p.tags || [],
                         url: `https://codeforces.com/problemset/problem/${p.contestId}/${p.index}`,
-                        solved: false,
                     }));
                     cfCache = cfProblems;
                     lastFetch = now;
@@ -62,7 +61,6 @@ export async function getProblems(
             difficulty: 800,
             tags: ["implementation"],
             url: "https://atcoder.jp/contests/abc001/tasks/abc001_a",
-            solved: false,
         });
     }
 
@@ -75,7 +73,6 @@ export async function getProblems(
             difficulty: 1200,
             tags: ["array", "hash-table"],
             url: "https://leetcode.com/problems/two-sum/",
-            solved: false,
         });
     }
 
