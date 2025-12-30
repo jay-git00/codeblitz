@@ -2,8 +2,8 @@ import { Trophy, Medal, ArrowUp, ArrowDown, User } from "lucide-react";
 
 export default function LeaderboardPage() {
     const leaders = [
-        { rank: 1, name: "PARDHU California ethical hacker", solved: 4502, streak: 120, rating: 3804, avatar: "T" },
-        { rank: 2, name: "nithin", solved: 3982, streak: 85, rating: 3652, avatar: "B" },
+        { rank: 1, name: "Nithin California ethical hacker", solved: 4502, streak: 120, rating: 3804, avatar: "T" },
+        { rank: 2, name: "AbhinavtheCoder", solved: 3982, streak: 85, rating: 3652, avatar: "B" },
         { rank: 3, name: "Ganesh the new insta influencer", solved: 3721, streak: 45, rating: 3591, avatar: "R" },
         { rank: 4, name: "Vikas 1cr package", solved: 3510, streak: 32, rating: 3482, avatar: "K" },
         { rank: 5, name: "Pranav the AI", solved: 3421, streak: 14, rating: 3421, avatar: "E" },
