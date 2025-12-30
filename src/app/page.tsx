@@ -1,12 +1,11 @@
-```javascript
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Added motion import
-import { ArrowRight, Code2, Calendar, Trophy, Zap, Star, Target, Users } from "lucide-react"; // Updated lucide-react imports
-import { useSession } from "next-auth/react"; // Added useSession import
-import { useRouter } from "next/navigation"; // Added useRouter import
+import { motion } from "framer-motion";
+import { ArrowRight, Code2, Calendar, Trophy, Zap, Star, Target, Users } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() { // Renamed Home to HomePage
   const { data: session } = useSession(); // Added useSession hook
@@ -40,24 +39,24 @@ export default function HomePage() { // Renamed Home to HomePage
       description: "Follow our algorithmic ladders specifically designed by top competitive programmers.",
       path: "/ladders", // Assuming a path for ladders
     },
-        {
-            icon: Calendar,
-            title: "Contest Calendar",
-            description: "Never miss a contest with our integrated calendar from multiple platforms.",
-            path: "/calendar",
-        },
-        {
-            icon: Trophy,
-            title: "CodeBlitz Ladders",
-            description: "Structured problem sets from beginner to advanced levels.",
-            path: "/ladder",
-        },
-        {
-            icon: Users,
-            title: "Global Leaderboard",
-            description: "Compete with programmers worldwide and track your progress.",
-            path: "/leaderboard",
-        },
+    {
+      icon: Calendar,
+      title: "Contest Calendar",
+      description: "Never miss a contest with our integrated calendar from multiple platforms.",
+      path: "/calendar",
+    },
+    {
+      icon: Trophy,
+      title: "CodeBlitz Ladders",
+      description: "Structured problem sets from beginner to advanced levels.",
+      path: "/ladder",
+    },
+    {
+      icon: Users,
+      title: "Global Leaderboard",
+      description: "Compete with programmers worldwide and track your progress.",
+      path: "/leaderboard",
+    },
   ];
 
   return (
