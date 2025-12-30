@@ -16,7 +16,8 @@ const CACHE_TTL = 3600 * 1000; // 1 hour
 export async function getProblems(
     platform: string = "all",
     query: string = "",
-    sort: string = "diff_asc"
+    sort: string = "diff_asc",
+    limit: number = 100
 ): Promise<Problem[]> {
     let problems: Problem[] = [];
 
@@ -45,8 +46,8 @@ export async function getProblems(
                     lastFetch = now;
                     problems.push(...cfProblems);
                 }
-            } catch (e) {
-                console.error("CF fetch error", e);
+            } catch (error) {
+                console.error("Failed to fetch Codeforces problems", error);
                 if (cfCache) problems.push(...cfCache); // Fallback to stale cache
             }
         }
@@ -77,12 +78,13 @@ export async function getProblems(
         );
     }
 
-    // Sorting
+    // Apply sorting
     if (sort === "diff_asc") {
-        problems.sort((a, b) => (Number(a.difficulty) || 0) - (Number(b.difficulty) || 0));
+        problems.sort((a, b) => a.difficulty as number - (b.difficulty as number));
     } else if (sort === "diff_desc") {
-        problems.sort((a, b) => (Number(b.difficulty) || 0) - (Number(a.difficulty) || 0));
+        problems.sort((a, b) => b.difficulty as number - (a.difficulty as number));
     }
 
-    return problems.slice(0, 50); // Limit to 50 for extreme speed
+    // Apply limit for better performance
+    return problems.slice(0, limit);
 }
