@@ -33,12 +33,13 @@ export async function getProblems(
                 const cfData = await cfRes.json();
                 if (cfData.status === "OK") {
                     const cfProblems = cfData.result.problems.map((p: any) => ({
-                        id: `cf-${p.contestId}${p.index}`,
+                        id: `${p.contestId}${p.index}`,
                         title: p.name,
-                        difficulty: p.rating || 0,
                         platform: "Codeforces",
-                        tags: p.tags,
+                        difficulty: p.rating || 0,
+                        tags: p.tags || [],
                         url: `https://codeforces.com/problemset/problem/${p.contestId}/${p.index}`,
+                        solved: false,
                     }));
                     cfCache = cfProblems;
                     lastFetch = now;
