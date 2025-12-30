@@ -20,8 +20,11 @@ export async function POST(req: Request) {
         });
 
         if (existingUser) {
+            const errorMessage = existingUser.email === email
+                ? "Email already registered"
+                : "Username already taken";
             return NextResponse.json(
-                { error: "User already exists" },
+                { error: errorMessage },
                 { status: 400 }
             );
         }
