@@ -1,5 +1,9 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -8,23 +12,18 @@ datasource db {
 }
 
 model User {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?         @unique
+  email         String    @unique
+  username      String    @unique
   emailVerified DateTime?
   image         String?
   password      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
   accounts      Account[]
   sessions      Session[]
-  
-  // Custom fields for CP Portal
-  username      String?         @unique
-  streak        Int             @default(0)
-  solvedCount   Int             @default(0)
-  favorites     Favorite[]
-  
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
 }
 
 model Account {
@@ -63,34 +62,12 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Favorite {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String   @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type      String   // "problem" or "contest"
-  itemId    String   // External ID from CF/AtCoder/etc.
-  title     String
-  platform  String
-  url       String
-  addedAt   DateTime @default(now())
-
-  @@unique([userId, itemId, type])
-}
-
-model ProblemStatus {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String   @db.ObjectId
-  problemId String
-  platform  String
-  status    String   // "solved", "attempting", "favorite"
-  updatedAt DateTime @updatedAt
-}
 model VerificationCode {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String
-  code      String
-  expires   DateTime
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String
+  code    String
+  expires DateTime
   createdAt DateTime @default(now())
 
-  @@unique([email, code])
+  @@index([email])
 }
